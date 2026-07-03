@@ -173,6 +173,31 @@ h1 span {
   font-size: 18px;
 }
 
+.speech-test {
+  display: grid;
+  max-width: 520px;
+  margin: 22px auto 0;
+  justify-items: center;
+  gap: 12px;
+}
+
+.test-speech-button {
+  min-width: 210px;
+  min-height: 60px;
+  padding: 13px 22px;
+  border: 2px solid #bfd2c8;
+  border-radius: 18px;
+  color: var(--green-dark);
+  background: var(--green-light);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.test-speech-button:hover,
+.test-speech-button.is-speaking {
+  background: #cfe3d9;
+}
+
 .scene-header {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -271,6 +296,23 @@ h2 {
   border-top: 1px dashed var(--line);
   color: var(--muted);
   font-size: 18px;
+}
+
+.speech-error {
+  width: 100%;
+  margin: 16px 0 0;
+  padding: 13px 16px;
+  border: 1px solid #edc3b8;
+  border-radius: 14px;
+  color: #793e32;
+  background: #fff0ec;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.speech-error[hidden] {
+  display: none;
 }
 
 .speak-button {

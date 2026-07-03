@@ -125,14 +125,22 @@ const speechStatus = document.querySelector("#speechStatus");
 const showMode = document.querySelector("#showMode");
 const showEnglish = document.querySelector("#showEnglish");
 const showChinese = document.querySelector("#showChinese");
+const testSpeechButton = document.querySelector("#testSpeechButton");
+const testSpeechError = document.querySelector("#testSpeechError");
 
 const FAVORITES_KEY = "travelBuddyFavorites";
+const SPEECH_UNSUPPORTED_MESSAGE = "当前浏览器不支持发音功能，请尝试使用 Chrome 或 Edge 打开。";
+const SPEECH_ERROR_MESSAGE = "这台手机暂时无法播放声音，请检查浏览器权限、媒体音量，或换 Chrome/Edge 试试。";
+const speechSupported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
 
 let activeSpeakButton = null;
 let statusTimer = null;
 let currentSceneId = null;
 let currentPhrases = [];
 let favorites = loadFavorites();
+let availableVoices = [];
+let voiceWaiters = [];
+let speechRequestId = 0;
 
 function loadFavorites() {
   try {
@@ -247,6 +255,7 @@ function renderPhraseCards() {
           </div>
         </div>
         <p class="usage-tip">💡 ${tip}${currentSceneId === "favorites" ? ` · 来自“${item.sceneName}”` : ""}</p>
+        <p class="speech-error" role="alert" hidden></p>
       </article>
     `;
   }).join("");
@@ -275,37 +284,114 @@ function resetSpeakButton() {
 }
 
 function stopSpeech() {
-  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+  speechRequestId += 1;
+  if (speechSupported) window.speechSynthesis.cancel();
   resetSpeakButton();
 }
 
-function speakEnglish(text, button, rate) {
-  if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
-    showStatus("这个浏览器暂不支持发音，请换用 Chrome、Edge 或 Safari。 ");
+function showSpeechError(element, message) {
+  if (element) {
+    element.textContent = message;
+    element.hidden = false;
+  } else {
+    showStatus(message);
+  }
+}
+
+function clearSpeechError(element) {
+  if (!element) return;
+  element.textContent = "";
+  element.hidden = true;
+}
+
+function loadVoices() {
+  if (!speechSupported) return [];
+  availableVoices = window.speechSynthesis.getVoices() || [];
+  return availableVoices;
+}
+
+function handleVoicesChanged() {
+  loadVoices();
+  const waiting = voiceWaiters;
+  voiceWaiters = [];
+  waiting.forEach((finish) => finish());
+}
+
+function waitForVoices() {
+  if (loadVoices().length > 0) return Promise.resolve();
+
+  return new Promise((resolve) => {
+    let finished = false;
+    let timerId;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      window.clearTimeout(timerId);
+      voiceWaiters = voiceWaiters.filter((waiter) => waiter !== finish);
+      resolve();
+    };
+
+    voiceWaiters.push(finish);
+    timerId = window.setTimeout(finish, 1000);
+  });
+}
+
+function initializeSpeech() {
+  if (!speechSupported) {
+    showSpeechError(testSpeechError, SPEECH_UNSUPPORTED_MESSAGE);
+    return;
+  }
+
+  loadVoices();
+  window.speechSynthesis.onvoiceschanged = handleVoicesChanged;
+}
+
+async function speakEnglish(text, button, rate, errorElement) {
+  if (!speechSupported) {
+    showSpeechError(errorElement, SPEECH_UNSUPPORTED_MESSAGE);
     return;
   }
 
   stopSpeech();
+  const requestId = speechRequestId;
+  clearSpeechError(errorElement);
+
+  activeSpeakButton = button;
+  button.classList.add("is-speaking");
+  button.textContent = "播放中…";
+
+  await waitForVoices();
+  if (requestId !== speechRequestId) return;
+
+  await new Promise((resolve) => window.setTimeout(resolve, 100));
+  if (requestId !== speechRequestId) return;
+
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = "en-US";
   utterance.rate = rate;
   utterance.pitch = 1;
+  utterance.volume = 1;
 
-  const englishVoice = window.speechSynthesis
-    .getVoices()
-    .find((voice) => voice.lang.toLowerCase().startsWith("en"));
+  const voices = loadVoices();
+  const englishVoice = voices.find((voice) => voice.lang.toLowerCase().includes("en"));
   if (englishVoice) utterance.voice = englishVoice;
 
-  activeSpeakButton = button;
-  button.classList.add("is-speaking");
-  button.textContent = "⏹ 正在播放";
-  utterance.onend = resetSpeakButton;
+  utterance.onend = () => {
+    if (requestId === speechRequestId) resetSpeakButton();
+  };
   utterance.onerror = () => {
+    if (requestId !== speechRequestId) return;
     resetSpeakButton();
-    showStatus("发音没有成功，请再点一次试试。 ");
+    showSpeechError(errorElement, SPEECH_ERROR_MESSAGE);
   };
 
-  window.speechSynthesis.speak(utterance);
+  try {
+    window.speechSynthesis.speak(utterance);
+  } catch (error) {
+    if (requestId !== speechRequestId) return;
+    resetSpeakButton();
+    showSpeechError(errorElement, SPEECH_ERROR_MESSAGE);
+  }
 }
 
 function toggleFavorite(item) {
@@ -360,7 +446,8 @@ phraseList.addEventListener("click", (event) => {
   if (!item) return;
 
   if (button.dataset.action === "speak") {
-    speakEnglish(item.phrase[0], button, Number(button.dataset.rate));
+    const errorElement = button.closest(".phrase-card")?.querySelector(".speech-error");
+    speakEnglish(item.phrase[0], button, Number(button.dataset.rate), errorElement);
   } else if (button.dataset.action === "favorite") {
     toggleFavorite(item);
   } else if (button.dataset.action === "show") {
@@ -369,6 +456,9 @@ phraseList.addEventListener("click", (event) => {
 });
 
 backButton.addEventListener("click", goHome);
+testSpeechButton.addEventListener("click", () => {
+  speakEnglish("Hello, this is Travel Buddy.", testSpeechButton, 0.8, testSpeechError);
+});
 showMode.addEventListener("click", closeShowMode);
 showMode.addEventListener("keydown", (event) => {
   if (event.key === "Enter" || event.key === " " || event.key === "Escape") {
@@ -384,3 +474,4 @@ document.addEventListener("fullscreenchange", () => {
 window.addEventListener("beforeunload", stopSpeech);
 
 renderSceneButtons();
+initializeSpeech();
