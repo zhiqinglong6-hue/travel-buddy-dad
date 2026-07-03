@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f1e7">
+  <meta name="description" content="给长辈准备的旅行英语随身卡片，点一点就能听发音。">
+  <title>Travel Buddy · 龙老板旅行英语</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section id="homeView" class="view home-view" aria-labelledby="mainTitle">
+      <header class="hero">
+        <p class="eyebrow">轻松开口 · 一句就够</p>
+        <h1 id="mainTitle">Travel Buddy<br><span>· 龙老板旅行英语</span></h1>
+        <p class="subtitle">今天学一句，出去旅行就敢说。还有问题找芷青～</p>
+        <p class="encouragement">不用说得很快，慢慢说、指一指，对方就能明白。</p>
+      </header>
+
+      <div id="sceneGrid" class="scene-grid" aria-label="旅行场景"></div>
+
+      <p class="home-tip">先选一个现在要用的场景 👆</p>
+    </section>
+
+    <section id="sceneView" class="view scene-view" aria-labelledby="sceneTitle" hidden>
+      <header class="scene-header">
+        <button id="backButton" class="back-button" type="button" aria-label="返回首页">
+          <span aria-hidden="true">←</span> 返回首页
+        </button>
+        <div>
+          <p class="eyebrow">点一下，就能听发音</p>
+          <h2 id="sceneTitle"></h2>
+          <p id="sceneIntro" class="scene-intro"></p>
+          <p class="speaking-reminder">🌿 不用说得很标准，慢慢说清楚就可以。</p>
+        </div>
+      </header>
+
+      <div id="phraseList" class="phrase-list" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <div id="speechStatus" class="speech-status" role="status" aria-live="polite"></div>
+
+  <div id="showMode" class="show-mode" role="button" tabindex="0" aria-label="点击屏幕退出给别人看模式" hidden>
+    <div class="show-mode-content">
+      <p id="showEnglish" class="show-english"></p>
+      <p id="showChinese" class="show-chinese"></p>
+    </div>
+  </div>
+
+  <noscript>
+    <p class="noscript-message">请打开浏览器的 JavaScript 功能，才能查看句子和播放发音。</p>
+  </noscript>
+
+  <script src="script.js"></script>
+</body>
+</html>
