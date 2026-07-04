@@ -241,8 +241,11 @@ function renderPhraseCards() {
           </div>
           <div class="card-actions" aria-label="句子操作">
             ${audio ? `
-              <button class="speak-button" type="button" data-action="audio" data-card-index="${index}" data-label="🔊 播放">
+              <button class="speak-button" type="button" data-action="audio" data-card-index="${index}" data-playback-rate="1" data-label="🔊 播放" data-playing-label="播放中…">
                 🔊 播放
+              </button>
+              <button class="speak-button slow-button" type="button" data-action="audio" data-card-index="${index}" data-playback-rate="0.7" data-label="🐢 慢速播放" data-playing-label="慢速播放中…">
+                🐢 慢速播放
               </button>
             ` : '<span class="no-audio">暂无音频</span>'}
             <button class="show-button" type="button" data-action="show" data-card-index="${index}">📱 给别人看</button>
@@ -307,7 +310,7 @@ function clearAudioError(element) {
   element.hidden = true;
 }
 
-function playAudioFile(audioPath, button, errorElement) {
+function playAudioFile(audioPath, button, errorElement, playbackRate = 1) {
   if (!audioPath) {
     showAudioError(errorElement, "暂无音频，请直接查看英文和中文读法。");
     return;
@@ -319,10 +322,11 @@ function playAudioFile(audioPath, button, errorElement) {
 
   const audio = new Audio(audioPath);
   let failed = false;
+  audio.playbackRate = playbackRate;
   currentAudio = audio;
   activeAudioButton = button;
   button.classList.add("is-speaking");
-  button.textContent = "播放中…";
+  button.textContent = button.dataset.playingLabel || "播放中…";
 
   const handleFailure = () => {
     if (failed || playbackId !== audioPlaybackId) return;
@@ -401,7 +405,7 @@ phraseList.addEventListener("click", (event) => {
 
   if (button.dataset.action === "audio") {
     const errorElement = button.closest(".phrase-card")?.querySelector(".speech-error");
-    playAudioFile(item.phrase.audio, button, errorElement);
+    playAudioFile(item.phrase.audio, button, errorElement, Number(button.dataset.playbackRate));
   } else if (button.dataset.action === "favorite") {
     toggleFavorite(item);
   } else if (button.dataset.action === "show") {
