@@ -5,12 +5,12 @@ const scenes = [
     name: "机场",
     intro: "值机、问路、过安检，先把最要紧的话说出来。",
     phrases: [
-      ["Where is check-in?", "在哪里办理登机？", "歪儿 一兹 切克因", "进机场后找不到值机柜台时，把机票给工作人员看。"],
-      ["Here is my passport.", "这是我的护照。", "希尔 一兹 麦 帕斯泼特", "办理值机或过关时，递上护照就说这句。"],
-      ["Where is gate ten?", "10号登机口在哪里？", "歪儿 一兹 给特 ten", "找登机口时使用。数字可以换成机票上的号码。"],
-      ["Is this the right gate?", "这是正确的登机口吗？", "一兹 迪斯 泽 赖特 给特", "不确定有没有走对时，把登机牌给对方看。"],
-      ["What time is boarding?", "几点开始登机？", "沃特 太姆 一兹 波丁", "想确认登机时间时使用。"],
-      ["My luggage is missing.", "我的行李不见了。", "麦 拉给只 一兹 米星", "到达后找不到托运行李时，对行李服务人员说。"]
+      { english: "Where is check-in?", chinese: "在哪里办理登机？", pronunciation: "歪儿 一兹 切克因", tip: "进机场后找不到值机柜台时，把机票给工作人员看。", audio: "assets/audio/where-is-check-in.wav" },
+      { english: "Here is my passport.", chinese: "这是我的护照。", pronunciation: "希尔 一兹 麦 帕斯泼特", tip: "办理值机或过关时，递上护照就说这句。", audio: "assets/audio/here-is-my-passport.wav" },
+      { english: "Where is gate ten?", chinese: "10号登机口在哪里？", pronunciation: "歪儿 一兹 给特 ten", tip: "找登机口时使用。数字可以换成机票上的号码。", audio: "assets/audio/where-is-gate-ten.wav" },
+      { english: "Is this the right gate?", chinese: "这是正确的登机口吗？", pronunciation: "一兹 迪斯 泽 赖特 给特", tip: "不确定有没有走对时，把登机牌给对方看。", audio: "assets/audio/is-this-the-right-gate.wav" },
+      { english: "What time is boarding?", chinese: "几点开始登机？", pronunciation: "沃特 太姆 一兹 波丁", tip: "想确认登机时间时使用。", audio: "assets/audio/what-time-is-boarding.wav" },
+      { english: "My luggage is missing.", chinese: "我的行李不见了。", pronunciation: "麦 拉给只 一兹 米星", tip: "到达后找不到托运行李时，对行李服务人员说。", audio: "assets/audio/my-luggage-is-missing.wav" }
     ]
   },
   {
@@ -19,12 +19,12 @@ const scenes = [
     name: "酒店",
     intro: "入住、拿房卡、问早餐，简单说也完全够用。",
     phrases: [
-      ["I have a reservation.", "我有预订。", "爱 哈夫 呃 瑞色微申", "到酒店前台办理入住时先说这句，再递护照。"],
-      ["I want to check in.", "我想办理入住。", "爱 旺特 图 切克 因", "到前台说明来意时使用。"],
-      ["What is the Wi-Fi password?", "Wi-Fi 密码是什么？", "沃特 一兹 泽 歪发 密码", "想连酒店网络时使用，也可以把手机页面给前台看。"],
-      ["What time is breakfast?", "早餐是几点？", "沃特 太姆 一兹 布瑞克发斯特", "入住时问清早餐时间。"],
-      ["Please clean my room.", "请打扫我的房间。", "普利兹 克林 麦 入姆", "需要客房清洁时，对前台或服务员说。"],
-      ["The key does not work.", "房卡打不开门。", "泽 ki 达兹 诺特 沃克", "房卡失效时，把卡递给前台一起说。"]
+      { english: "I have a reservation.", chinese: "我有预订。", pronunciation: "爱 哈夫 呃 瑞色微申", tip: "到酒店前台办理入住时先说这句，再递护照。", audio: "assets/audio/i-have-a-reservation.wav" },
+      { english: "I want to check in.", chinese: "我想办理入住。", pronunciation: "爱 旺特 图 切克 因", tip: "到前台说明来意时使用。", audio: "assets/audio/i-want-to-check-in.wav" },
+      { english: "What is the Wi-Fi password?", chinese: "Wi-Fi 密码是什么？", pronunciation: "沃特 一兹 泽 歪发 密码", tip: "想连酒店网络时使用，也可以把手机页面给前台看。", audio: "assets/audio/what-is-the-wi-fi-password.wav" },
+      { english: "What time is breakfast?", chinese: "早餐是几点？", pronunciation: "沃特 太姆 一兹 布瑞克发斯特", tip: "入住时问清早餐时间。", audio: "assets/audio/what-time-is-breakfast.wav" },
+      { english: "Please clean my room.", chinese: "请打扫我的房间。", pronunciation: "普利兹 克林 麦 入姆", tip: "需要客房清洁时，对前台或服务员说。", audio: "assets/audio/please-clean-my-room.wav" },
+      { english: "The key does not work.", chinese: "房卡打不开门。", pronunciation: "泽 ki 达兹 诺特 沃克", tip: "房卡失效时，把卡递给前台一起说。", audio: "assets/audio/the-key-does-not-work.wav" }
     ]
   },
   {
@@ -33,12 +33,12 @@ const scenes = [
     name: "餐厅",
     intro: "点餐不用说长句，指着菜单配合这些话最好用。",
     phrases: [
-      ["A table for one, please.", "请给我一张单人桌。", "呃 忒波 佛 万 普利兹", "一个人去餐厅时说。两个人把 one 换成 two。"],
-      ["This one, please.", "请给我这个。", "迪斯 万 普利兹", "指着菜单或图片点餐，最简单也最实用。"],
-      ["No spicy, please.", "请不要辣。", "诺 斯派西 普利兹", "不能吃辣时，点菜后补上这句。"],
-      ["Water, please.", "请给我水。", "沃特 普利兹", "需要水时使用。"],
-      ["It is delicious.", "很好吃。", "一特 一兹 迪利舍斯", "觉得好吃时告诉服务员，对方会很开心。"],
-      ["The bill, please.", "请结账。", "泽 比欧 普利兹", "吃完要买单时说，也可以做一个写字的手势。"]
+      { english: "A table for one, please.", chinese: "请给我一张单人桌。", pronunciation: "呃 忒波 佛 万 普利兹", tip: "一个人去餐厅时说。两个人把 one 换成 two。", audio: "assets/audio/a-table-for-one-please.wav" },
+      { english: "This one, please.", chinese: "请给我这个。", pronunciation: "迪斯 万 普利兹", tip: "指着菜单或图片点餐，最简单也最实用。", audio: "assets/audio/this-one-please.wav" },
+      { english: "No spicy, please.", chinese: "请不要辣。", pronunciation: "诺 斯派西 普利兹", tip: "不能吃辣时，点菜后补上这句。", audio: "assets/audio/no-spicy-please.wav" },
+      { english: "Water, please.", chinese: "请给我水。", pronunciation: "沃特 普利兹", tip: "需要水时使用。", audio: "assets/audio/water-please.wav" },
+      { english: "It is delicious.", chinese: "很好吃。", pronunciation: "一特 一兹 迪利舍斯", tip: "觉得好吃时告诉服务员，对方会很开心。", audio: "assets/audio/it-is-delicious.wav" },
+      { english: "The bill, please.", chinese: "请结账。", pronunciation: "泽 比欧 普利兹", tip: "吃完要买单时说，也可以做一个写字的手势。", audio: "assets/audio/the-bill-please.wav" }
     ]
   },
   {
@@ -47,12 +47,12 @@ const scenes = [
     name: "打车",
     intro: "把地址给司机看，再说一句，省心又清楚。",
     phrases: [
-      ["Please take me here.", "请带我去这里。", "普利兹 忒克 米 希尔", "把手机上的地址指给司机看，同时说这句。"],
-      ["How much is it?", "多少钱？", "豪 马吃 一兹 一特", "上车前问价格，或到达后问车费。"],
-      ["Please use the meter.", "请打表。", "普利兹 优兹 泽 米特", "希望司机按计价器收费时说。"],
-      ["Please stop here.", "请在这里停车。", "普利兹 斯道普 希尔", "快到目的地，想让司机在当前位置停时说。"],
-      ["Is it far?", "远吗？", "一兹 一特 发", "想知道路程远不远时使用。"],
-      ["Please drive slowly.", "请开慢一点。", "普利兹 拽夫 斯楼里", "觉得车开得太快、不安心时说。"]
+      { english: "Please take me here.", chinese: "请带我去这里。", pronunciation: "普利兹 忒克 米 希尔", tip: "把手机上的地址指给司机看，同时说这句。", audio: "assets/audio/please-take-me-here.wav" },
+      { english: "How much is it?", chinese: "多少钱？", pronunciation: "豪 马吃 一兹 一特", tip: "上车前问价格，或到达后问车费。", audio: "assets/audio/how-much-is-it.wav" },
+      { english: "Please use the meter.", chinese: "请打表。", pronunciation: "普利兹 优兹 泽 米特", tip: "希望司机按计价器收费时说。", audio: "assets/audio/please-use-the-meter.wav" },
+      { english: "Please stop here.", chinese: "请在这里停车。", pronunciation: "普利兹 斯道普 希尔", tip: "快到目的地，想让司机在当前位置停时说。", audio: "assets/audio/please-stop-here.wav" },
+      { english: "Is it far?", chinese: "远吗？", pronunciation: "一兹 一特 发", tip: "想知道路程远不远时使用。", audio: "assets/audio/is-it-far.wav" },
+      { english: "Please drive slowly.", chinese: "请开慢一点。", pronunciation: "普利兹 拽夫 斯楼里", tip: "觉得车开得太快、不安心时说。", audio: "assets/audio/please-drive-slowly.wav" }
     ]
   },
   {
@@ -61,12 +61,12 @@ const scenes = [
     name: "找厕所",
     intro: "着急的时候只说第一句就够了，对方通常会直接指路。",
     phrases: [
-      ["Where is the toilet?", "厕所在哪里？", "歪儿 一兹 泽 托伊勒特", "最常用的一句。也可以同时指一下厕所图标。"],
-      ["Is there a toilet nearby?", "附近有厕所吗？", "一兹 泽儿 呃 托伊勒特 尼尔拜", "在街上或商店里找厕所时使用。"],
-      ["Can I use the toilet?", "我可以用一下厕所吗？", "看 爱 优兹 泽 托伊勒特", "在餐厅或店里想借用厕所时说。"],
-      ["Is it free?", "是免费的吗？", "一兹 一特 弗瑞", "有些地方厕所要收费，不确定时先问。"],
-      ["Do I need a coin?", "需要硬币吗？", "度 爱 尼德 呃 靠因", "看到收费门、不知道怎么进时问工作人员。"],
-      ["Thank you.", "谢谢。", "三克 优", "别人给你指路后，笑着说一声就好。"]
+      { english: "Where is the toilet?", chinese: "厕所在哪里？", pronunciation: "歪儿 一兹 泽 托伊勒特", tip: "最常用的一句。也可以同时指一下厕所图标。", audio: "assets/audio/where-is-the-toilet.wav" },
+      { english: "Is there a toilet nearby?", chinese: "附近有厕所吗？", pronunciation: "一兹 泽儿 呃 托伊勒特 尼尔拜", tip: "在街上或商店里找厕所时使用。", audio: "assets/audio/is-there-a-toilet-nearby.wav" },
+      { english: "Can I use the toilet?", chinese: "我可以用一下厕所吗？", pronunciation: "看 爱 优兹 泽 托伊勒特", tip: "在餐厅或店里想借用厕所时说。", audio: "assets/audio/can-i-use-the-toilet.wav" },
+      { english: "Is it free?", chinese: "是免费的吗？", pronunciation: "一兹 一特 弗瑞", tip: "有些地方厕所要收费，不确定时先问。", audio: "assets/audio/is-it-free.wav" },
+      { english: "Do I need a coin?", chinese: "需要硬币吗？", pronunciation: "度 爱 尼德 呃 靠因", tip: "看到收费门、不知道怎么进时问工作人员。", audio: "assets/audio/do-i-need-a-coin.wav" },
+      { english: "Thank you.", chinese: "谢谢。", pronunciation: "三克 优", tip: "别人给你指路后，笑着说一声就好。", audio: "assets/audio/thank-you.wav" }
     ]
   },
   {
@@ -75,12 +75,12 @@ const scenes = [
     name: "求助",
     intro: "遇到困难先别慌，短短一句就能让别人知道你需要帮助。",
     phrases: [
-      ["Can you help me?", "你能帮帮我吗？", "看 优 海欧普 米", "不知道怎么办时先说这句，再把手机或票给对方看。"],
-      ["I do not speak English.", "我不会说英语。", "爱 度 诺特 斯必克 英格利许", "听不懂时先说明，对方通常会换简单说法。"],
-      ["Please speak slowly.", "请说慢一点。", "普利兹 斯必克 斯楼里", "对方说得太快时使用。"],
-      ["Please write it down.", "请写下来。", "普利兹 赖特 一特 当", "听不清数字、地址或时间时，请对方写给你看。"],
-      ["I am lost.", "我迷路了。", "爱 艾姆 洛斯特", "找不到方向时说，再把目的地给对方看。"],
-      ["Call the police, please.", "请帮我报警。", "靠欧 泽 泼利斯 普利兹", "遇到危险、被偷或需要警察帮助时说。"]
+      { english: "Can you help me?", chinese: "你能帮帮我吗？", pronunciation: "看 优 海欧普 米", tip: "不知道怎么办时先说这句，再把手机或票给对方看。", audio: "assets/audio/can-you-help-me.wav" },
+      { english: "I do not speak English.", chinese: "我不会说英语。", pronunciation: "爱 度 诺特 斯必克 英格利许", tip: "听不懂时先说明，对方通常会换简单说法。", audio: "assets/audio/i-do-not-speak-english.wav" },
+      { english: "Please speak slowly.", chinese: "请说慢一点。", pronunciation: "普利兹 斯必克 斯楼里", tip: "对方说得太快时使用。", audio: "assets/audio/please-speak-slowly.wav" },
+      { english: "Please write it down.", chinese: "请写下来。", pronunciation: "普利兹 赖特 一特 当", tip: "听不清数字、地址或时间时，请对方写给你看。", audio: "assets/audio/please-write-it-down.wav" },
+      { english: "I am lost.", chinese: "我迷路了。", pronunciation: "爱 艾姆 洛斯特", tip: "找不到方向时说，再把目的地给对方看。", audio: "assets/audio/i-am-lost.wav" },
+      { english: "Call the police, please.", chinese: "请帮我报警。", pronunciation: "靠欧 泽 泼利斯 普利兹", tip: "遇到危险、被偷或需要警察帮助时说。", audio: "assets/audio/call-the-police-please.wav" }
     ]
   },
   {
@@ -89,13 +89,13 @@ const scenes = [
     name: "购物",
     intro: "看中就指一指，价格、尺码和付款用短句就能问清楚。",
     phrases: [
-      ["How much is this?", "这个多少钱？", "豪 马吃 一兹 迪斯", "指着想买的东西问价格。"],
-      ["It is too expensive.", "这个太贵了。", "一特 一兹 图 以克斯本西夫", "觉得价格太高时说，不用不好意思。"],
-      ["Do you have a larger size?", "有大一号的吗？", "度 优 哈夫 呃 拉这 赛兹", "衣服或鞋子偏小时，指着商品问店员。"],
-      ["Do you have a smaller size?", "有小一号的吗？", "度 优 哈夫 呃 斯莫勒 赛兹", "衣服或鞋子偏大时使用。"],
-      ["Can I try this on?", "我可以试穿吗？", "看 爱 拽 迪斯 昂", "想试衣服、鞋子或帽子时使用。"],
-      ["I will take this.", "我要这个。", "爱 威欧 忒克 迪斯", "决定购买时，拿着商品说这句。"],
-      ["Can I pay by card?", "可以刷卡吗？", "看 爱 配 拜 卡德", "付款前想确认能不能刷卡时问。"]
+      { english: "How much is this?", chinese: "这个多少钱？", pronunciation: "豪 马吃 一兹 迪斯", tip: "指着想买的东西问价格。", audio: "assets/audio/how-much-is-this.wav" },
+      { english: "It is too expensive.", chinese: "这个太贵了。", pronunciation: "一特 一兹 图 以克斯本西夫", tip: "觉得价格太高时说，不用不好意思。", audio: "assets/audio/it-is-too-expensive.wav" },
+      { english: "Do you have a larger size?", chinese: "有大一号的吗？", pronunciation: "度 优 哈夫 呃 拉这 赛兹", tip: "衣服或鞋子偏小时，指着商品问店员。", audio: "assets/audio/do-you-have-a-larger-size.wav" },
+      { english: "Do you have a smaller size?", chinese: "有小一号的吗？", pronunciation: "度 优 哈夫 呃 斯莫勒 赛兹", tip: "衣服或鞋子偏大时使用。", audio: "assets/audio/do-you-have-a-smaller-size.wav" },
+      { english: "Can I try this on?", chinese: "我可以试穿吗？", pronunciation: "看 爱 拽 迪斯 昂", tip: "想试衣服、鞋子或帽子时使用。", audio: "assets/audio/can-i-try-this-on.wav" },
+      { english: "I will take this.", chinese: "我要这个。", pronunciation: "爱 威欧 忒克 迪斯", tip: "决定购买时，拿着商品说这句。", audio: "assets/audio/i-will-take-this.wav" },
+      { english: "Can I pay by card?", chinese: "可以刷卡吗？", pronunciation: "看 爱 配 拜 卡德", tip: "付款前想确认能不能刷卡时问。", audio: "assets/audio/can-i-pay-by-card.wav" }
     ]
   },
   {
@@ -104,12 +104,12 @@ const scenes = [
     name: "买药",
     intro: "说清哪里不舒服，也可以把药盒或手机上的图片给药剂师看。",
     phrases: [
-      ["Where is a pharmacy?", "药店在哪里？", "歪儿 一兹 呃 发马西", "找不到药店时问路。"],
-      ["I have a headache.", "我头疼。", "爱 哈夫 呃 海带克", "头疼时告诉药剂师。"],
-      ["I have a cold.", "我感冒了。", "爱 哈夫 呃 靠欧德", "有普通感冒症状时使用。"],
-      ["I have a stomachache.", "我肚子疼。", "爱 哈夫 呃 斯达马克", "肚子不舒服时告诉药剂师。"],
-      ["Do you have this medicine?", "你们有这种药吗？", "度 优 哈夫 迪斯 麦迪森", "把药盒、药名或照片给店员看。"],
-      ["How many times a day?", "一天吃几次？", "豪 麦尼 太姆斯 呃 得", "买到药后确认每天用几次；也请看清药盒说明。"]
+      { english: "Where is a pharmacy?", chinese: "药店在哪里？", pronunciation: "歪儿 一兹 呃 发马西", tip: "找不到药店时问路。", audio: "assets/audio/where-is-a-pharmacy.wav" },
+      { english: "I have a headache.", chinese: "我头疼。", pronunciation: "爱 哈夫 呃 海带克", tip: "头疼时告诉药剂师。", audio: "assets/audio/i-have-a-headache.wav" },
+      { english: "I have a cold.", chinese: "我感冒了。", pronunciation: "爱 哈夫 呃 靠欧德", tip: "有普通感冒症状时使用。", audio: "assets/audio/i-have-a-cold.wav" },
+      { english: "I have a stomachache.", chinese: "我肚子疼。", pronunciation: "爱 哈夫 呃 斯达马克", tip: "肚子不舒服时告诉药剂师。", audio: "assets/audio/i-have-a-stomachache.wav" },
+      { english: "Do you have this medicine?", chinese: "你们有这种药吗？", pronunciation: "度 优 哈夫 迪斯 麦迪森", tip: "把药盒、药名或照片给店员看。", audio: "assets/audio/do-you-have-this-medicine.wav" },
+      { english: "How many times a day?", chinese: "一天吃几次？", pronunciation: "豪 麦尼 太姆斯 呃 得", tip: "买到药后确认每天用几次；也请看清药盒说明。", audio: "assets/audio/how-many-times-a-day.wav" }
     ]
   }
 ];
@@ -129,18 +129,16 @@ const testSpeechButton = document.querySelector("#testSpeechButton");
 const testSpeechError = document.querySelector("#testSpeechError");
 
 const FAVORITES_KEY = "travelBuddyFavorites";
-const SPEECH_UNSUPPORTED_MESSAGE = "当前浏览器不支持发音功能，请尝试使用 Chrome 或 Edge 打开。";
-const SPEECH_ERROR_MESSAGE = "这台手机暂时无法播放声音，请检查浏览器权限、媒体音量，或换 Chrome/Edge 试试。";
-const speechSupported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+const AUDIO_ERROR_MESSAGE = "这台手机暂时无法播放音频，请检查媒体音量，或点击英文大字给别人看。";
+const TEST_AUDIO_PATH = "assets/audio/hello-this-is-travel-buddy.wav";
 
-let activeSpeakButton = null;
+let activeAudioButton = null;
+let currentAudio = null;
+let audioPlaybackId = 0;
 let statusTimer = null;
 let currentSceneId = null;
 let currentPhrases = [];
 let favorites = loadFavorites();
-let availableVoices = [];
-let voiceWaiters = [];
-let speechRequestId = 0;
 
 function loadFavorites() {
   try {
@@ -193,7 +191,7 @@ function openScene(sceneId) {
   const scene = scenes.find((item) => item.id === sceneId);
   if (!isFavorites && !scene) return;
 
-  stopSpeech();
+  stopAudio();
   currentSceneId = sceneId;
   if (isFavorites) {
     sceneTitle.textContent = "❤️ 我的常用句";
@@ -226,7 +224,7 @@ function renderPhraseCards() {
   }
 
   phraseList.innerHTML = currentPhrases.map((item, index) => {
-    const [english, chinese, pronunciation, tip] = item.phrase;
+    const { english, chinese, pronunciation, tip, audio } = item.phrase;
     const words = english.split(/\s+/);
     const wordPractice = words.map((word, wordIndex) => `
       <span>${word}</span>${wordIndex < words.length - 1 ? '<span class="separator" aria-hidden="true">/</span>' : ''}
@@ -242,12 +240,11 @@ function renderPhraseCards() {
             <p class="pronunciation">读法：${pronunciation}</p>
           </div>
           <div class="card-actions" aria-label="句子操作">
-            <button class="speak-button" type="button" data-action="speak" data-card-index="${index}" data-rate="0.8" data-label="🔊 正常播放">
-              🔊 正常播放
-            </button>
-            <button class="speak-button slow-button" type="button" data-action="speak" data-card-index="${index}" data-rate="0.4" data-label="🐢 慢速播放">
-              🐢 慢速播放
-            </button>
+            ${audio ? `
+              <button class="speak-button" type="button" data-action="audio" data-card-index="${index}" data-label="🔊 播放">
+                🔊 播放
+              </button>
+            ` : '<span class="no-audio">暂无音频</span>'}
             <button class="show-button" type="button" data-action="show" data-card-index="${index}">📱 给别人看</button>
             <button class="favorite-button${isFavorite ? " is-favorite" : ""}" type="button" data-action="favorite" data-card-index="${index}">
               ${isFavorite ? "❤️ 已收藏" : "❤️ 收藏"}
@@ -262,7 +259,7 @@ function renderPhraseCards() {
 }
 
 function goHome() {
-  stopSpeech();
+  stopAudio();
   sceneView.hidden = true;
   homeView.hidden = false;
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -276,20 +273,26 @@ function showStatus(message) {
   statusTimer = window.setTimeout(() => speechStatus.classList.remove("show"), 2600);
 }
 
-function resetSpeakButton() {
-  if (!activeSpeakButton) return;
-  activeSpeakButton.classList.remove("is-speaking");
-  activeSpeakButton.textContent = activeSpeakButton.dataset.label;
-  activeSpeakButton = null;
+function resetAudioButton() {
+  if (!activeAudioButton) return;
+  activeAudioButton.classList.remove("is-speaking");
+  activeAudioButton.textContent = activeAudioButton.dataset.label;
+  activeAudioButton = null;
 }
 
-function stopSpeech() {
-  speechRequestId += 1;
-  if (speechSupported) window.speechSynthesis.cancel();
-  resetSpeakButton();
+function stopAudio() {
+  audioPlaybackId += 1;
+  if (currentAudio) {
+    currentAudio.onended = null;
+    currentAudio.onerror = null;
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    currentAudio = null;
+  }
+  resetAudioButton();
 }
 
-function showSpeechError(element, message) {
+function showAudioError(element, message) {
   if (element) {
     element.textContent = message;
     element.hidden = false;
@@ -298,99 +301,50 @@ function showSpeechError(element, message) {
   }
 }
 
-function clearSpeechError(element) {
+function clearAudioError(element) {
   if (!element) return;
   element.textContent = "";
   element.hidden = true;
 }
 
-function loadVoices() {
-  if (!speechSupported) return [];
-  availableVoices = window.speechSynthesis.getVoices() || [];
-  return availableVoices;
-}
-
-function handleVoicesChanged() {
-  loadVoices();
-  const waiting = voiceWaiters;
-  voiceWaiters = [];
-  waiting.forEach((finish) => finish());
-}
-
-function waitForVoices() {
-  if (loadVoices().length > 0) return Promise.resolve();
-
-  return new Promise((resolve) => {
-    let finished = false;
-    let timerId;
-    const finish = () => {
-      if (finished) return;
-      finished = true;
-      window.clearTimeout(timerId);
-      voiceWaiters = voiceWaiters.filter((waiter) => waiter !== finish);
-      resolve();
-    };
-
-    voiceWaiters.push(finish);
-    timerId = window.setTimeout(finish, 1000);
-  });
-}
-
-function initializeSpeech() {
-  if (!speechSupported) {
-    showSpeechError(testSpeechError, SPEECH_UNSUPPORTED_MESSAGE);
+function playAudioFile(audioPath, button, errorElement) {
+  if (!audioPath) {
+    showAudioError(errorElement, "暂无音频，请直接查看英文和中文读法。");
     return;
   }
 
-  loadVoices();
-  window.speechSynthesis.onvoiceschanged = handleVoicesChanged;
-}
+  stopAudio();
+  const playbackId = audioPlaybackId;
+  clearAudioError(errorElement);
 
-async function speakEnglish(text, button, rate, errorElement) {
-  if (!speechSupported) {
-    showSpeechError(errorElement, SPEECH_UNSUPPORTED_MESSAGE);
-    return;
-  }
-
-  stopSpeech();
-  const requestId = speechRequestId;
-  clearSpeechError(errorElement);
-
-  activeSpeakButton = button;
+  const audio = new Audio(audioPath);
+  let failed = false;
+  currentAudio = audio;
+  activeAudioButton = button;
   button.classList.add("is-speaking");
   button.textContent = "播放中…";
 
-  await waitForVoices();
-  if (requestId !== speechRequestId) return;
-
-  await new Promise((resolve) => window.setTimeout(resolve, 100));
-  if (requestId !== speechRequestId) return;
-
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "en-US";
-  utterance.rate = rate;
-  utterance.pitch = 1;
-  utterance.volume = 1;
-
-  const voices = loadVoices();
-  const englishVoice = voices.find((voice) => voice.lang.toLowerCase().includes("en"));
-  if (englishVoice) utterance.voice = englishVoice;
-
-  utterance.onend = () => {
-    if (requestId === speechRequestId) resetSpeakButton();
+  const handleFailure = () => {
+    if (failed || playbackId !== audioPlaybackId) return;
+    failed = true;
+    currentAudio = null;
+    resetAudioButton();
+    showAudioError(errorElement, AUDIO_ERROR_MESSAGE);
   };
-  utterance.onerror = () => {
-    if (requestId !== speechRequestId) return;
-    resetSpeakButton();
-    showSpeechError(errorElement, SPEECH_ERROR_MESSAGE);
+
+  audio.preload = "auto";
+  audio.onended = () => {
+    if (playbackId !== audioPlaybackId) return;
+    currentAudio = null;
+    resetAudioButton();
   };
+  audio.onerror = handleFailure;
 
   try {
-    window.speechSynthesis.speak(utterance);
+    const playResult = audio.play();
+    if (playResult?.catch) playResult.catch(handleFailure);
   } catch (error) {
-    if (requestId !== speechRequestId) return;
-    resetSpeakButton();
-    showSpeechError(errorElement, SPEECH_ERROR_MESSAGE);
+    handleFailure();
   }
 }
 
@@ -411,9 +365,9 @@ function toggleFavorite(item) {
 }
 
 function openShowMode(item) {
-  stopSpeech();
-  showEnglish.textContent = item.phrase[0];
-  showChinese.textContent = item.phrase[1];
+  stopAudio();
+  showEnglish.textContent = item.phrase.english;
+  showChinese.textContent = item.phrase.chinese;
   showMode.hidden = false;
   document.body.classList.add("showing-phrase");
 
@@ -445,9 +399,9 @@ phraseList.addEventListener("click", (event) => {
   const item = currentPhrases[Number(button.dataset.cardIndex)];
   if (!item) return;
 
-  if (button.dataset.action === "speak") {
+  if (button.dataset.action === "audio") {
     const errorElement = button.closest(".phrase-card")?.querySelector(".speech-error");
-    speakEnglish(item.phrase[0], button, Number(button.dataset.rate), errorElement);
+    playAudioFile(item.phrase.audio, button, errorElement);
   } else if (button.dataset.action === "favorite") {
     toggleFavorite(item);
   } else if (button.dataset.action === "show") {
@@ -457,7 +411,7 @@ phraseList.addEventListener("click", (event) => {
 
 backButton.addEventListener("click", goHome);
 testSpeechButton.addEventListener("click", () => {
-  speakEnglish("Hello, this is Travel Buddy.", testSpeechButton, 0.8, testSpeechError);
+  playAudioFile(TEST_AUDIO_PATH, testSpeechButton, testSpeechError);
 });
 showMode.addEventListener("click", closeShowMode);
 showMode.addEventListener("keydown", (event) => {
@@ -471,7 +425,6 @@ document.addEventListener("fullscreenchange", () => {
   if (!document.fullscreenElement && !showMode.hidden) closeShowMode();
 });
 
-window.addEventListener("beforeunload", stopSpeech);
+window.addEventListener("beforeunload", stopAudio);
 
 renderSceneButtons();
-initializeSpeech();
